@@ -1,0 +1,27 @@
+background        no
+out_to_console 	  yes
+out_to_x	  no
+update_interval	  2
+total_run_times	  0
+short_units	  yes
+pad_percents	  3
+
+# override_utf8_locale yes
+
+TEXT
+,[{ "full_text":  "CPU: $cpu% "},
+  { "full_text": "up: ${uptime_short} " },
+  { "full_text": "$kernel"},
+  { "full_text": "${top name 1}" },
+  ${if_up p2p1} { "full_text": "eth: ${addr p2p1}" },${endif}
+  { "full_text": "/: ${fs_free /}" },
+  { "full_text": "/home: ${fs_free /home}" },
+  { "full_text": " ≣ ${mem} - ${memperc}% ", "color":${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif}},
+  { "full_text": "temp1:${exec sensors | grep 'temp1' | cut -c16-19 | sed '/^$/d' }°C " },
+  { "full_text": "temp2:${exec sensors | grep 'temp2' | cut -c16-19 | sed '/^$/d' }°C " },
+  { "full_text": "GPU: ${exec ~/.i3/nvidia_temp.sh}°C" },
+  # { "full_text": "${exec whoami}@${nodename} " },
+  # {"full_text": " ♪ [$amixer%] ", "color":"\#268BD2"},
+  {"full_text": " ${time %a %d %b} ${time %H:%M} "}
+]
+
