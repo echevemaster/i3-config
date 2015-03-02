@@ -14,10 +14,10 @@ case "$1" in
         pm-hibernate
         ;;
     reboot)
-        reboot
+        systemctl reboot
         ;;
     shutdown)
-        poweroff
+        systemctl poweroff
         ;;
     *)
         echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"

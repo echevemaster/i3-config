@@ -13,7 +13,7 @@ TEXT
   { "full_text": "up: ${uptime_short} " },
   { "full_text": "$kernel"},
   { "full_text": "${top name 1}" },
-  ${if_up p2p1} { "full_text": "eth: ${addr p2p1}" },${endif}
+  ${if_up bridge0} { "full_text": "eth: ${addr bridge0}" },${endif}
   { "full_text": "/: ${fs_free /}" },
   { "full_text": "/home: ${fs_free /home}" },
   { "full_text": " ≣ ${mem} - ${memperc}% ", "color":${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif}},
